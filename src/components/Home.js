@@ -14,12 +14,12 @@ import { selectUserName } from "../features/user/userSlice";
 function Home() {
   const dispatch = useDispatch();
   const username = useSelector(selectUserName);
-  let recommend = [];
-  let newDisney = [];
-  let Original = [];
-  let trending = [];
 
   useEffect(() => {
+    let recommend = [];
+    let newDisney = [];
+    let Original = [];
+    let trending = [];
     db.collection("movies").onSnapshot((snapshot) => {
       // eslint-disable-next-line array-callback-return
       snapshot.docs.map((doc) => {
@@ -37,7 +37,6 @@ function Home() {
             trending = [...trending, { id: doc.id, ...doc.data() }];
             break;
           default:
-            break;
         }
       });
 

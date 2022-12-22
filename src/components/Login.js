@@ -6,12 +6,12 @@ function Login() {
     <Container>
       <Content>
         <CTA>
-          <CTAlogoOne src="/media/images/cta-logo-one.svg" alt=""/>
+          <CTAlogoOne src="/media/images/cta-logo-one.svg" alt="" />
           <SignUp>GET IT ALL THERE</SignUp>
           <Description>
-            test test test test test test testtesttest test test
+            test test test test test test test test test test test
           </Description>
-          <CTAlogoTwo src="/media/images/cta-logo-two.png"  alt=""/>
+          <CTAlogoTwo src="/media/images/cta-logo-two.png" alt="" />
         </CTA>
         <BgImage />
       </Content>

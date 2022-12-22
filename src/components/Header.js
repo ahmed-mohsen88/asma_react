@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { auth, provider } from "../firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
   selectUserName,
   selectUserPhoto,
@@ -18,8 +18,7 @@ function Header() {
   const userPhoto = useSelector(selectUserPhoto);
   useEffect(() => {
     setimageUrl(userPhoto);
-    return () => {};
-  }, []);
+  }, [userPhoto]);
 
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
@@ -66,38 +65,40 @@ function Header() {
 
   return (
     <Nav>
-      <Logo>
-        <img src={`${imagesUrl}logo.svg`} alt="" />
-      </Logo>
+      <Link to="/home">
+        <Logo>
+          <img src={`${imagesUrl}logo.svg`} alt="" />
+        </Logo>
+      </Link>
       {!username ? (
         <Login onClick={handelAuth}>LOGIN</Login>
       ) : (
         <>
           <NavMenu>
-            <a href="/home">
+            <Link to="/home">
               <img src={`${imagesUrl}home-icon.svg`} alt="" />
               <span>HOME</span>
-            </a>
-            <a href="/home">
+            </Link>
+            <Link to="/home">
               <img src={`${imagesUrl}search-icon.svg`} alt="" />
               <span>SEARCH</span>
-            </a>
-            <a href="/home">
+            </Link>
+            <Link to="/home">
               <img src={`${imagesUrl}watchlist-icon.svg`} alt="" />
               <span>WATCH LIST</span>
-            </a>
-            <a href="/home">
+            </Link>
+            <Link to="/home">
               <img src={`${imagesUrl}original-icon.svg`} alt="" />
               <span>ORIGINALS</span>
-            </a>
-            <a href="/home">
+            </Link>
+            <Link to="/home">
               <img src={`${imagesUrl}movie-icon.svg`} alt="" />
               <span>MOVIES</span>
-            </a>
-            <a href="/home">
+            </Link>
+            <Link to="/home">
               <img src={`${imagesUrl}series-icon.svg`} alt="" />
               <span>SERIES</span>
-            </a>
+            </Link>
           </NavMenu>
           <SignOut>
             <UserImg src={`${userPhoto}`} alt={username} />
@@ -131,7 +132,7 @@ const Logo = styled.a`
   max-height: 70px;
   font-size: 0;
   display: inline-block;
-
+  cursor: pointer;
   img {
     display: block;
   }
@@ -207,6 +208,7 @@ const Login = styled.a`
   border: 1px solid #f9f9f9;
   border-radius: 4px;
   transition: all 2s ease 0s;
+  cursor: pointer;
 
   &:hover {
     background-color: #f9f9f9;
